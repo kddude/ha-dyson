@@ -12,6 +12,7 @@ from libdyson import (
     DysonPureHotCool,
     DysonPureHotCoolLink,
     DysonPureHumidifyCool,
+    DysonPureHumidifyCoolPH03,
     DysonPurifierHumidifyCoolFormaldehyde,
     MessageType,
     get_device,

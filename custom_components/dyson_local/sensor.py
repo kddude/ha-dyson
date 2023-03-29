@@ -8,6 +8,7 @@ from libdyson import (
     DysonDevice,
     DysonPureCoolLink,
     DysonPureHumidifyCool,
+    DysonPureHumidifyCoolPH03,
     DysonPurifierHumidifyCoolFormaldehyde,
 )
 from libdyson.const import MessageType
@@ -55,7 +56,7 @@ async def async_setup_entry(
                     DysonParticulatesSensor(coordinator, device, name),
                 ]
             )
-        else:  # DysonPureCool or DysonPureHumidifyCool
+        else:  # DysonPureCool or DysonPureHumidifyCool or DysonPureHumidifyCoolPH03
             entities.extend(
                 [
                     DysonPM25Sensor(coordinator, device, name),
@@ -72,7 +73,7 @@ async def async_setup_entry(
                         DysonHEPAFilterLifeSensor(device, name),
                     ]
                 )
-        if isinstance(device, DysonPureHumidifyCool) or isinstance(
+        if isinstance(device, DysonPureHumidifyCool) or isinstance(device, DysonPureHumidifyCoolPH03) or isinstance(
             device, DysonPurifierHumidifyCoolFormaldehyde):
             entities.append(DysonNextDeepCleanSensor(device, name))
         if isinstance(device, DysonPurifierHumidifyCoolFormaldehyde):
